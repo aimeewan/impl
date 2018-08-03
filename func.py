@@ -18,3 +18,42 @@ def add(numbers):
     return sum
 
 add(101)
+
+'''可变参数
+可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple
+*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见。
+'''
+def calc(*number):
+    sum = 0
+    for n in number:
+        sum = sum + n * n
+    return sum
+
+nums = [1,2,3,4,5]
+calc(*nums)
+
+'''关键字参数
+关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。
+'''
+def register(name,age,**kw):
+    print("name is :",name," age is :",age ,"other's :",kw)
+
+register('name',45,gen='M')
+
+extr = {'city':'Beijing','job':'tester'}
+register('极光',35,city=extr['city'],job=extr['job'])
+register('极光',35,**extr)
+
+'''命名关键字参数
+和关键字参数**kw不同，命名关键字参数需要一个特殊分隔符*，*后面的参数被视为命名关键字参数。
+参数的顺序可以变换，但是关键字一定要正确，如果关键字对应不上，程序运行会报错
+命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错
+'''
+def person(name,age,*,city,job):
+    print(name,age,city,job)
+person('zhangsheng',35,city='shanghai',job='tester')
+
+'''如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了'''
+def pepeole(name,age,*args,city,job):
+    print(name,age,args,city,job)
+pepeole('qingtian',25,)
