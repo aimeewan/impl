@@ -43,4 +43,4 @@ else:
     print('7测试成功!')
 
 str = ' nA B C D 1'
-str[-1:]
+str[:1]
